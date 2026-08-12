@@ -11,6 +11,7 @@ from app.api import (
     loa,
     openings,
     organization,
+    payment,
     procurement,
     properties,
     workflow,
@@ -45,6 +46,7 @@ def create_app() -> FastAPI:
     app.include_router(procurement.router, prefix="/api/v1")
     app.include_router(accounts.router, prefix="/api/v1")
     app.include_router(cc.router, prefix="/api/v1")
+    app.include_router(payment.router, prefix="/api/v1")
     return app
 
 
