@@ -29,6 +29,7 @@ def _detail(opening: BranchOpening, db: Session) -> OpeningDetailed:
     from app.schemas.openings import (
         AreaBrief,
         RegionBrief,
+        StageStatusRead,
         WorkflowInstanceRead,
         WorkflowStageDefRead,
     )
@@ -39,12 +40,12 @@ def _detail(opening: BranchOpening, db: Session) -> OpeningDetailed:
     instances = sorted(opening.workflow_instances, key=lambda i: i.stage.sequence)
 
     completed = [
-        WorkflowStageDefRead(id=i.stage.id, code=i.stage.code, name=i.stage.name, sequence=i.stage.sequence)
+        StageStatusRead(id=i.stage.id, code=i.stage.code, name=i.stage.name, sequence=i.stage.sequence, status=i.status, assigned_to=i.assigned_to)
         for i in instances
         if i.status in ("APPROVED", "COMPLETED")
     ]
     pending = [
-        WorkflowStageDefRead(id=i.stage.id, code=i.stage.code, name=i.stage.name, sequence=i.stage.sequence)
+        StageStatusRead(id=i.stage.id, code=i.stage.code, name=i.stage.name, sequence=i.stage.sequence, status=i.status, assigned_to=i.assigned_to)
         for i in instances
         if i.status not in ("APPROVED", "COMPLETED")
     ]

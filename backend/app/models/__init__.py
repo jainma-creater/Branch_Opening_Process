@@ -1,3 +1,4 @@
+from app.models.approval import Approval, ApprovalDecision, ApprovalType
 from app.models.audit import AuditEvent
 from app.models.opening import BranchOpening, CaseStatus, WorkflowStage
 from app.models.organization import Area, Branch, Region
@@ -7,6 +8,9 @@ from app.models.workflow import WorkflowInstance, WorkflowStageDefinition, Workf
 
 __all__ = [
     "Area",
+    "Approval",
+    "ApprovalDecision",
+    "ApprovalType",
     "AuditEvent",
     "Branch",
     "BranchOpening",

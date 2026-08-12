@@ -50,6 +50,11 @@ class WorkflowStageDefRead(BaseModel):
     sequence: int
 
 
+class StageStatusRead(WorkflowStageDefRead):
+    status: str
+    assigned_to: int | None = None
+
+
 class BranchBrief(BaseModel):
     model_config = ConfigDict(from_attributes=True)
 
@@ -97,6 +102,6 @@ class OpeningRead(BaseModel):
 
 
 class OpeningDetailed(OpeningRead):
-    pending_stages: list[WorkflowStageDefRead] = []
-    completed_stages: list[WorkflowStageDefRead] = []
+    pending_stages: list[StageStatusRead] = []
+    completed_stages: list[StageStatusRead] = []
     pending_tasks: int = 0
