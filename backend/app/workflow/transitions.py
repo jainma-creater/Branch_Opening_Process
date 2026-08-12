@@ -57,6 +57,13 @@ ROLL_TRANSITIONS: dict[str, list[str]] = {
     "REGIONAL_ADMIN": ["PROPERTY_APPROVAL", "SECURITY_DEPOSIT", "LOA", "AGREEMENT", "QUOTATION"],
 }
 
+#: Designated approver role for each stage (used to permit send-backs).
+STAGE_APPROVER: dict[str, str] = {
+    "ACCOUNTS": "ACCOUNTS",
+    "CC_APPROVAL": "CC",
+    "MD_APPROVAL": "MD",
+}
+
 
 def is_allowed(current: str, target: str) -> bool:
     return target in TRANSITIONS.get(current, [])

@@ -132,7 +132,13 @@ class WorkflowService:
                 detail="No previous stage to send back to",
             )
         role = actor.role.name if actor.role else ""
-        if not can_role_advance(role, current) and role not in ("ADMIN", "SUPER_ADMIN"):
+        from app.workflow.transitions import STAGE_APPROVER
+
+        if not (
+            can_role_advance(role, current)
+            or role in ("ADMIN", "SUPER_ADMIN")
+            or role == STAGE_APPROVER.get(current)
+        ):
             raise HTTPException(
                 status_code=status.HTTP_403_FORBIDDEN,
                 detail="Your role cannot send this case back",
