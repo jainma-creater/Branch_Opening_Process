@@ -9,6 +9,7 @@ from app.api import (
     loa,
     openings,
     organization,
+    procurement,
     properties,
     workflow,
 )
@@ -39,6 +40,7 @@ def create_app() -> FastAPI:
     app.include_router(deposits.router, prefix="/api/v1")
     app.include_router(loa.router, prefix="/api/v1")
     app.include_router(agreements.router, prefix="/api/v1")
+    app.include_router(procurement.router, prefix="/api/v1")
     return app
 
 

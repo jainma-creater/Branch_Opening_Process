@@ -13,6 +13,16 @@ from app.models.deposit import (
 from app.models.opening import BranchOpening, CaseStatus, WorkflowStage
 from app.models.organization import Area, Branch, Region
 from app.models.property import PropertyOption, PropertyStatus, RentLimitResult
+from app.models.procurement import (
+    ItemCategory,
+    Quotation,
+    QuotationItem,
+    QuotationRequest,
+    QuotationRequestItem,
+    QuotationRequestStatus,
+    QuotationStatus,
+    Vendor,
+)
 from app.models.task import TaskStatus, WorkflowTask
 from app.models.user import Role, User
 from app.models.workflow import WorkflowInstance, WorkflowStageDefinition, WorkflowStageStatus
@@ -33,17 +43,25 @@ __all__ = [
     "DepositPayee",
     "DepositPayment",
     "DepositStatus",
+    "ItemCategory",
     "LOARequest",
     "LOAStatus",
     "PayeeStatus",
     "PropertyOption",
     "PropertyStatus",
+    "Quotation",
+    "QuotationItem",
+    "QuotationRequest",
+    "QuotationRequestItem",
+    "QuotationRequestStatus",
+    "QuotationStatus",
     "RentLimitResult",
     "Region",
     "Role",
     "SecurityDeposit",
     "TaskStatus",
     "User",
+    "Vendor",
     "WorkflowInstance",
     "WorkflowStage",
     "WorkflowStageDefinition",
