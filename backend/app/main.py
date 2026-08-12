@@ -15,6 +15,7 @@ from app.api import (
     payment,
     procurement,
     properties,
+    reports,
     workflow,
 )
 from app.api.health import router as health_router
@@ -49,6 +50,7 @@ def create_app() -> FastAPI:
     app.include_router(cc.router, prefix="/api/v1")
     app.include_router(payment.router, prefix="/api/v1")
     app.include_router(completion.router, prefix="/api/v1")
+    app.include_router(reports.router, prefix="/api/v1")
     return app
 
 
