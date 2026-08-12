@@ -30,6 +30,10 @@ def db_engine():
         poolclass=StaticPool,
     )
     Base.metadata.create_all(engine)
+    from app.db.seed import seed_all
+
+    with sessionmaker(bind=engine, autoflush=False, expire_on_commit=False)() as session:
+        seed_all(session)
     _TEST_ENGINE = engine
     _TEST_FACTORY = sessionmaker(bind=engine, autoflush=False, expire_on_commit=False)
     yield engine

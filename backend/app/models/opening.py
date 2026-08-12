@@ -44,6 +44,9 @@ class BranchOpening(Base):
     project_type: Mapped[str] = mapped_column(String(30))
     business_reason: Mapped[str | None] = mapped_column(String(500))
     requested_by: Mapped[int | None] = mapped_column(ForeignKey("users.id", ondelete="RESTRICT"), index=True)
+    assigned_to: Mapped[int | None] = mapped_column(
+        ForeignKey("users.id", ondelete="SET NULL"), index=True
+    )
     requested_date: Mapped[date] = mapped_column(Date)
     tentative_operations_date: Mapped[date | None] = mapped_column(Date)
     agreement_commencement_date: Mapped[date | None] = mapped_column(Date)
