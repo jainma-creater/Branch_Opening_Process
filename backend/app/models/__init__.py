@@ -1,3 +1,4 @@
+from app.models.agreement import Agreement, AgreementParty, AgreementStatus, PartyType
 from app.models.approval import Approval, ApprovalDecision, ApprovalType
 from app.models.audit import AuditEvent
 from app.models.deposit import (
@@ -17,6 +18,10 @@ from app.models.user import Role, User
 from app.models.workflow import WorkflowInstance, WorkflowStageDefinition, WorkflowStageStatus
 
 __all__ = [
+    "Agreement",
+    "AgreementParty",
+    "AgreementStatus",
+    "PartyType",
     "Area",
     "Approval",
     "ApprovalDecision",
