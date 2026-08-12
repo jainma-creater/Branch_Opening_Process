@@ -26,6 +26,7 @@ class User(Base):
     name: Mapped[str] = mapped_column(String(120))
     email: Mapped[str] = mapped_column(String(255), unique=True, index=True)
     role_id: Mapped[int] = mapped_column(ForeignKey("roles.id", ondelete="RESTRICT"), index=True)
+    password_hash: Mapped[str | None] = mapped_column(String(255))
     region_id: Mapped[int | None] = mapped_column(ForeignKey("regions.id", ondelete="RESTRICT"), index=True)
     area_id: Mapped[int | None] = mapped_column(ForeignKey("areas.id", ondelete="RESTRICT"), index=True)
     is_active: Mapped[bool] = mapped_column(Boolean, default=True, server_default="true", index=True)
