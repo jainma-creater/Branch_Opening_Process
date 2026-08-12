@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.api import (
+    accounts,
     agreements,
     approvals,
     auth,
@@ -41,6 +42,7 @@ def create_app() -> FastAPI:
     app.include_router(loa.router, prefix="/api/v1")
     app.include_router(agreements.router, prefix="/api/v1")
     app.include_router(procurement.router, prefix="/api/v1")
+    app.include_router(accounts.router, prefix="/api/v1")
     return app
 
 

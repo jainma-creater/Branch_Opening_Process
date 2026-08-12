@@ -14,6 +14,8 @@ class ApprovalDecision(StrEnum):
     APPROVED = "APPROVED"
     REJECTED = "REJECTED"
     SENT_BACK = "SENT_BACK"
+    MISMATCH = "MISMATCH"
+    REVISION_REQUIRED = "REVISION_REQUIRED"
 
 
 class ApprovalType(StrEnum):
@@ -22,6 +24,8 @@ class ApprovalType(StrEnum):
     LOA = "LOA"
     AGREEMENT = "AGREEMENT"
     QUOTATION = "QUOTATION"
+    ACCOUNTS = "ACCOUNTS"
+    INVOICE = "INVOICE"
     CC = "CC"
     MD = "MD"
     PAYMENT = "PAYMENT"

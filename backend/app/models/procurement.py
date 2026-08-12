@@ -76,6 +76,7 @@ class QuotationRequest(Base):
     selected_vendor_id: Mapped[int | None] = mapped_column(
         ForeignKey("vendors.id", ondelete="RESTRICT")
     )
+    approved_amount: Mapped[Decimal | None] = mapped_column(Numeric(14, 2))
     created_by: Mapped[int | None] = mapped_column(
         ForeignKey("users.id", ondelete="SET NULL")
     )
