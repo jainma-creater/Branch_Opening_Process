@@ -1,7 +1,16 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from app.api import approvals, auth, openings, organization, properties, workflow
+from app.api import (
+    approvals,
+    auth,
+    deposits,
+    loa,
+    openings,
+    organization,
+    properties,
+    workflow,
+)
 from app.api.health import router as health_router
 from app.core.config import settings
 
@@ -26,6 +35,8 @@ def create_app() -> FastAPI:
     app.include_router(workflow.router, prefix="/api/v1")
     app.include_router(approvals.router, prefix="/api/v1")
     app.include_router(properties.router, prefix="/api/v1")
+    app.include_router(deposits.router, prefix="/api/v1")
+    app.include_router(loa.router, prefix="/api/v1")
     return app
 
 

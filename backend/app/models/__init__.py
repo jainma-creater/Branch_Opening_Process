@@ -1,5 +1,14 @@
 from app.models.approval import Approval, ApprovalDecision, ApprovalType
 from app.models.audit import AuditEvent
+from app.models.deposit import (
+    DepositPayment,
+    DepositPayee,
+    DepositStatus,
+    LOARequest,
+    LOAStatus,
+    PayeeStatus,
+    SecurityDeposit,
+)
 from app.models.opening import BranchOpening, CaseStatus, WorkflowStage
 from app.models.organization import Area, Branch, Region
 from app.models.property import PropertyOption, PropertyStatus, RentLimitResult
@@ -16,11 +25,18 @@ __all__ = [
     "Branch",
     "BranchOpening",
     "CaseStatus",
+    "DepositPayee",
+    "DepositPayment",
+    "DepositStatus",
+    "LOARequest",
+    "LOAStatus",
+    "PayeeStatus",
     "PropertyOption",
     "PropertyStatus",
     "RentLimitResult",
     "Region",
     "Role",
+    "SecurityDeposit",
     "TaskStatus",
     "User",
     "WorkflowInstance",
