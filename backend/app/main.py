@@ -7,6 +7,7 @@ from app.api import (
     approvals,
     auth,
     cc,
+    completion,
     deposits,
     loa,
     openings,
@@ -47,6 +48,7 @@ def create_app() -> FastAPI:
     app.include_router(accounts.router, prefix="/api/v1")
     app.include_router(cc.router, prefix="/api/v1")
     app.include_router(payment.router, prefix="/api/v1")
+    app.include_router(completion.router, prefix="/api/v1")
     return app
 
 

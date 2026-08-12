@@ -2,6 +2,13 @@ from app.models.accounts import AccountReviewDecision, Invoice, InvoiceStatus
 from app.models.agreement import Agreement, AgreementParty, AgreementStatus, PartyType
 from app.models.approval import Approval, ApprovalDecision, ApprovalType
 from app.models.cc import CCRequest, CCRequestItem, CCRequestStatus
+from app.models.completion import (
+    Fitout,
+    FitoutStatus,
+    OpeningRecord,
+    ReadinessItem,
+    ReadinessStatus,
+)
 from app.models.payment import Payment, PaymentMode, PaymentStatus
 from app.models.audit import AuditEvent
 from app.models.deposit import (
@@ -44,6 +51,11 @@ __all__ = [
     "Payment",
     "PaymentMode",
     "PaymentStatus",
+    "Fitout",
+    "FitoutStatus",
+    "OpeningRecord",
+    "ReadinessItem",
+    "ReadinessStatus",
     "Area",
     "Approval",
     "ApprovalDecision",
