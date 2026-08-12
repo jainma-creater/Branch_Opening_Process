@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from datetime import date, datetime
 from enum import StrEnum
 
@@ -41,7 +43,7 @@ class BranchOpening(Base):
     branch_id: Mapped[int] = mapped_column(ForeignKey("branches.id", ondelete="RESTRICT"), index=True)
     project_type: Mapped[str] = mapped_column(String(30))
     business_reason: Mapped[str | None] = mapped_column(String(500))
-    requested_by: Mapped[int | None] = mapped_column()
+    requested_by: Mapped[int | None] = mapped_column(ForeignKey("users.id", ondelete="RESTRICT"), index=True)
     requested_date: Mapped[date] = mapped_column(Date)
     tentative_operations_date: Mapped[date | None] = mapped_column(Date)
     agreement_commencement_date: Mapped[date | None] = mapped_column(Date)
@@ -53,3 +55,6 @@ class BranchOpening(Base):
     completed_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
 
     branch: Mapped["Branch"] = relationship(back_populates="openings")
+    workflow_instances: Mapped[list["WorkflowInstance"]] = relationship(
+        back_populates="opening", cascade="all, delete-orphan"
+    )

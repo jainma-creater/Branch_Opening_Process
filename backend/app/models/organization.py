@@ -1,7 +1,9 @@
+from __future__ import annotations
+
 from datetime import datetime
 from decimal import Decimal
 
-from sqlalchemy import DateTime, ForeignKey, Numeric, String, func
+from sqlalchemy import DateTime, ForeignKey, Numeric, String, UniqueConstraint, func
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.db.base import Base
@@ -15,11 +17,12 @@ class Region(Base):
     rent_limit: Mapped[Decimal | None] = mapped_column(Numeric(12, 2))
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
 
-    areas: Mapped[list["Area"]] = relationship(back_populates="region")
+    areas: Mapped[list["Area"]] = relationship(back_populates="region", cascade="all, delete-orphan")
 
 
 class Area(Base):
     __tablename__ = "areas"
+    __table_args__ = (UniqueConstraint("region_id", "name", name="uq_area_region_name"),)
 
     id: Mapped[int] = mapped_column(primary_key=True)
     region_id: Mapped[int] = mapped_column(ForeignKey("regions.id", ondelete="RESTRICT"), index=True)
@@ -28,7 +31,7 @@ class Area(Base):
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
 
     region: Mapped[Region] = relationship(back_populates="areas")
-    branches: Mapped[list["Branch"]] = relationship(back_populates="area")
+    branches: Mapped[list["Branch"]] = relationship(back_populates="area", cascade="all, delete-orphan")
 
 
 class Branch(Base):
@@ -45,4 +48,4 @@ class Branch(Base):
     openings: Mapped[list["BranchOpening"]] = relationship(back_populates="branch")
 
 
-from app.models.opening import BranchOpening  # noqa: E402
+from app.models.opening import BranchOpening  # noqa: E402, F401
